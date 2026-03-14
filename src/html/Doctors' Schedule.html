@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Doctors' Schedule – Hospital Management Dashboard</title>
+<link rel="shortcut icon" type="image/png" href="../assets/images/logos/hospital (1).png"/>
+<link rel="stylesheet" href="../assets/css/styles.min.css"/>
+<link rel="stylesheet" href="../assets/fontawesome-free-7.2.0-web/css/all.min.css">
+</head>
+<body>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+
+<aside class="left-sidebar"><div>
+<div class="brand-logo d-flex align-items-center justify-content-between">
+<a href="index.html" class="text-nowrap logo-img"><h3 class="fw-bold text-primary"><i class="fa-solid fa-hospital me-2"></i> MediCare</h3></a>
+<div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse"><i class="ti ti-x fs-8"></i></div>
+</div>
+<nav class="sidebar-nav scroll-sidebar"><ul id="sidebarnav">
+<li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
+<li class="sidebar-item"><a class="sidebar-link" href="index.html"><span><i class="ti ti-layout-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Appointments.html"><span><i class="fas fa-calendar-check"></i></span><span class="hide-menu">Appointments</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Patients.html"><span><i class="fas fa-user-injured"></i></span><span class="hide-menu">Patients</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Doctors.html"><span><i class="fas fa-user-md"></i></span><span class="hide-menu">Doctors</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Departments.html"><span><i class="fas fa-building"></i></span><span class="hide-menu">Departments</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link active" href="./Doctors' Schedule.html"><span><i class="fas fa-calendar-day"></i></span><span class="hide-menu">Doctors' Schedule</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Messages.html"><span><i class="fas fa-envelope"></i></span><span class="hide-menu">Messages</span></a></li>
+<li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">AUTH</span></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./register.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Register</span></a></li>
+</ul></nav></div></aside>
+
+<div class="body-wrapper">
+<header class="app-header">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <ul class="navbar-nav flex-grow-1">
+      <li class="nav-item d-block d-xl-none"><a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li>
+    </ul>
+    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+      <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+        <li class="nav-item"><a class="nav-link nav-icon-hover" href="javascript:void(0)"><i class="ti ti-bell-ringing"></i><div class="notification bg-primary rounded-circle"></div></a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+            <div class="message-body">
+              <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-user fs-6"></i><p class="mb-0 fs-3">My Profile</p></a>
+              <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-mail fs-6"></i><p class="mb-0 fs-3">My Account</p></a>
+                <a href="./login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container-fluid">
+
+  <!-- Toolbar -->
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+    <div class="d-flex align-items-center gap-2">
+      <h5 class="fw-bold mb-0" id="calTitle">July 2026</h5>
+      <button class="btn btn-sm btn-outline-secondary border-0 p-1" onclick="shiftMonth(-1)"><i class="fas fa-chevron-left text-muted"></i></button>
+      <button class="btn btn-sm btn-outline-secondary border-0 p-1" onclick="shiftMonth(1)"><i class="fas fa-chevron-right text-muted"></i></button>
+    </div>
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <div class="btn-group btn-group-sm" id="viewToggle">
+        <button class="btn btn-outline-secondary" onclick="setView(this,'day')">Day</button>
+        <button class="btn btn-outline-secondary" onclick="setView(this,'week')">Week</button>
+        <button class="btn btn-dark active-view" onclick="setView(this,'month')">Month</button>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1 dropdown-toggle" id="agendaBtn" data-bs-toggle="dropdown">
+          <span id="agendaLabel">All Agenda</span>
+        </button>
+        <ul class="dropdown-menu shadow-sm border-0" style="font-size:.82rem;">
+          <li><a class="dropdown-item" href="#" onclick="setAgenda(this,'all','All Agenda')">All Agenda</a></li>
+          <li><a class="dropdown-item" href="#" onclick="setAgenda(this,'mine','My Agenda')">My Agenda</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#" onclick="setAgenda(this,'petra','Dr. Petra Winsburry')">Dr. Petra Winsburry</a></li>
+          <li><a class="dropdown-item" href="#" onclick="setAgenda(this,'emily','Dr. Emily Smith')">Dr. Emily Smith</a></li>
+          <li><a class="dropdown-item" href="#" onclick="setAgenda(this,'michael','Dr. Michael Brown')">Dr. Michael Brown</a></li>
+        </ul>
+      </div>
+      <button class="btn btn-dark btn-sm d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#addSchedModal">
+        <i class="fas fa-plus"></i> Add Schedule
+      </button>
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+      <table class="table table-bordered mb-0" style="table-layout:fixed;" id="calTable">
+        <thead class="table-light">
+          <tr>
+            <th class="text-center fw-semibold text-muted small py-2">Sunday</th>
+            <th class="text-center fw-semibold text-muted small py-2">Monday</th>
+            <th class="text-center fw-semibold text-muted small py-2">Tuesday</th>
+            <th class="text-center fw-semibold text-muted small py-2">Wednesday</th>
+            <th class="text-center fw-semibold text-muted small py-2">Thursday</th>
+            <th class="text-center fw-semibold text-muted small py-2">Friday</th>
+            <th class="text-center fw-semibold text-muted small py-2">Saturday</th>
+          </tr>
+        </thead>
+        <tbody id="calBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</div>
+</div>
+
+<!-- Add Schedule Modal -->
+<div class="modal fade" id="addSchedModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header border-0"><h6 class="modal-title fw-bold">Add Schedule</h6><button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body pt-0">
+        <div class="row g-3">
+          <div class="col-6"><label class="form-label small fw-semibold">Doctor</label>
+            <select class="form-select form-select-sm" id="newSchedDoc">
+              <option>Dr. Petra Winsburry</option><option>Dr. Emily Smith</option><option>Dr. Michael Brown</option>
+              <option>Dr. John Davis</option><option>Dr. Linda Green</option><option>Dr. Olivia Martinez</option>
+            </select></div>
+          <div class="col-6"><label class="form-label small fw-semibold">Date</label>
+            <input type="date" class="form-control form-control-sm" id="newSchedDate" value="2026-07-20"></div>
+          <div class="col-6"><label class="form-label small fw-semibold">Time</label>
+            <input type="time" class="form-control form-control-sm" id="newSchedTime" value="09:00"></div>
+          <div class="col-6"><label class="form-label small fw-semibold">Style</label>
+            <select class="form-select form-select-sm" id="newSchedStyle">
+              <option value="dark">Dark</option><option value="teal">Teal</option>
+            </select></div>
+          <div class="col-12"><label class="form-label small fw-semibold">Description (optional)</label>
+            <input type="text" class="form-control form-control-sm" id="newSchedDesc" placeholder="e.g. Routine Check-Up with John Smith"></div>
+        </div>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-dark btn-sm" onclick="addSchedule()">Add Schedule</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Event Detail Modal -->
+<div class="modal fade" id="eventModal" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header border-0"><h6 class="modal-title fw-bold">Schedule Details</h6><button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body pt-0" id="eventBody"></div>
+      <div class="modal-footer border-0 pt-0">
+        <button class="btn btn-danger btn-sm" id="deleteEventBtn">Delete</button>
+        <a href="./Doctors.html" class="btn btn-dark btn-sm">View Doctor</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
+  <div id="toastEl" class="toast align-items-center text-white border-0"><div class="d-flex"><div class="toast-body fw-semibold small" id="toastMsg"></div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div></div>
+</div>
+
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/sidebarmenu.js"></script>
+<script src="../assets/js/app.min.js"></script>
+<script>
+const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+let calYear = 2026, calMonth = 6; // July
+let agendaFilter = 'all';
+let currentView = 'month';
+let viewEventIdx = null;
+
+// Schedule data: { doc, date (YYYY-MM-DD), time, desc, style:'dark'|'teal' }
+let schedules = [
+  {doc:'Dr. Petra Winsburry',date:'2026-07-01',time:'09:00 AM',desc:'Routine Check-Up',style:'dark'},
+  {doc:'Dr. Emily Smith',date:'2026-07-01',time:'10:00 AM',desc:'General Consultation',style:'teal'},
+  {doc:'Dr. John Davis',date:'2026-07-03',time:'11:00 AM',desc:'Patient Consultation',style:'teal'},
+  {doc:'Dr. Linda Green',date:'2026-07-03',time:'01:00 PM',desc:'Preventive Care',style:'teal'},
+  {doc:'Dr. Michael Brown',date:'2026-07-04',time:'02:00 PM',desc:'Geriatric Care Session',style:'teal'},
+  {doc:'Dr. Petra Winsburry',date:'2026-07-04',time:'03:00 PM',desc:'Follow-Up Visit',style:'teal'},
+  {doc:'Dr. Emily Smith',date:'2026-07-05',time:'04:00 PM',desc:'Chronic Disease Management',style:'teal'},
+  {doc:'Dr. Petra Winsburry',date:'2026-07-06',time:'10:00 AM',desc:'Acute Illness Treatment',style:'teal'},
+  {doc:'Dr. John Davis',date:'2026-07-07',time:'09:00 AM',desc:'Morning Rounds',style:'dark'},
+  {doc:'Dr. Linda Green',date:'2026-07-07',time:'10:00 AM',desc:'Preventive Care',style:'teal'},
+  {doc:'Dr. Michael Brown',date:'2026-07-09',time:'11:00 AM',desc:'Geriatric Consultation',style:'teal'},
+  {doc:'Dr. Petra Winsburry',date:'2026-07-09',time:'01:00 PM',desc:'Routine Check-Up',style:'teal'},
+  {doc:'Dr. Emily Smith',date:'2026-07-11',time:'02:00 PM',desc:'Asthma Management',style:'teal'},
+  {doc:'Dr. John Davis',date:'2026-07-12',time:'03:00 PM',desc:'Skin Rash Treatment',style:'teal'},
+  {doc:'Dr. Linda Green',date:'2026-07-14',time:'04:00 PM',desc:'Preventive Care Consultation',style:'dark'},
+  {doc:'Dr. Petra Winsburry',date:'2026-07-15',time:'09:00 AM',desc:'Routine Check-Up',style:'dark'},
+  {doc:'Dr. Emily Smith',date:'2026-07-17',time:'10:00 AM',desc:'Diabetes Management',style:'teal'},
+  {doc:'Dr. John Davis',date:'2026-07-18',time:'11:00 AM',desc:'Flu Symptoms',style:'teal'},
+  {doc:'Dr. Linda Green',date:'2026-07-20',time:'01:00 PM',desc:'Preventive Care',style:'teal'},
+  {doc:'Dr. Michael Brown',date:'2026-07-22',time:'02:00 PM',desc:'Arthritis Management',style:'dark'},
+  {doc:'Dr. Petra Winsburry',date:'2026-07-23',time:'03:00 PM',desc:'Routine Check-Up',style:'teal'},
+  {doc:'Dr. Emily Smith',date:'2026-07-26',time:'04:00 PM',desc:'Hypertension Check',style:'teal'},
+  {doc:'Dr. John Davis',date:'2026-07-27',time:'10:00 AM',desc:'Respiratory Infection',style:'teal'},
+  {doc:'Dr. Linda Green',date:'2026-07-28',time:'10:00 AM',desc:'Preventive Care',style:'dark'},
+  {doc:'Dr. Michael Brown',date:'2026-07-29',time:'11:00 AM',desc:'Medication Review',style:'dark'},
+  {doc:'Dr. Petra Winsburry',date:'2026-07-31',time:'09:00 AM',desc:'Routine Check-Up',style:'teal'},
+];
+
+function getFiltered(){
+  if(agendaFilter==='all') return schedules;
+  const map={petra:'Dr. Petra Winsburry',emily:'Dr. Emily Smith',michael:'Dr. Michael Brown',mine:'Dr. Petra Winsburry'};
+  return schedules.filter(s=>s.doc===map[agendaFilter]);
+}
+
+function renderCalendar(){
+  document.getElementById('calTitle').textContent = monthNames[calMonth]+' '+calYear;
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const prevDays = new Date(calYear, calMonth, 0).getDate();
+  const today = new Date(2026,6,20); // fixed today
+  const filtered = getFiltered();
+
+  let html='', day=1, nextDay=1;
+  for(let r=0;r<6;r++){
+    html+='<tr style="height:130px;">';
+    for(let c=0;c<7;c++){
+      if(r===0&&c<firstDay){
+        const pd=prevDays-firstDay+c+1;
+        html+=`<td class="p-2 align-top bg-light"><small class="text-muted fw-semibold">${pd}</small></td>`;
+      } else if(day>daysInMonth){
+        html+=`<td class="p-2 align-top bg-light"><small class="text-muted fw-semibold">${nextDay++}</small></td>`;
+      } else {
+        const dateStr=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+        const isToday = (new Date(calYear,calMonth,day)).getTime()===today.getTime();
+        const dayLabel = isToday
+          ? `<span class="d-inline-flex align-items-center justify-content-center bg-dark text-white rounded-circle fw-bold mb-1" style="width:22px;height:22px;font-size:.65rem;">${day}</span>`
+          : `<small class="fw-semibold d-block mb-1">${day}</small>`;
+        const daySchs = filtered.filter(s=>s.date===dateStr);
+        const pills = daySchs.slice(0,3).map((s,i)=>{
+          const cls = s.style==='dark'
+            ? 'badge bg-dark w-100 text-start fw-semibold mb-1'
+            : 'badge w-100 text-start fw-semibold mb-1';
+          const inlineStyle = s.style==='teal' ? 'background:#b2f0ea;color:#0d7a6f;' : '';
+          return `<div class="${cls}" style="font-size:.62rem;white-space:normal;line-height:1.4;cursor:pointer;${inlineStyle}" onclick="viewEvent('${dateStr}',${schedules.indexOf(s)})" data-bs-toggle="tooltip" title="${s.doc} · ${s.time}">${s.doc}<br><i class='fas fa-clock' style='font-size:.5rem;'></i> ${s.time}</div>`;
+        }).join('');
+        const extra = daySchs.length>3 ? `<small class="text-muted" style="font-size:.6rem;">+${daySchs.length-3} more</small>` : '';
+        html+=`<td class="p-2 align-top">${dayLabel}${pills}${extra}</td>`;
+        day++;
+      }
+    }
+    html+='</tr>';
+    if(day>daysInMonth && r<5) { html+='</tbody>'; break; }
+  }
+  document.getElementById('calBody').innerHTML=html;
+  // Init tooltips
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el=>new bootstrap.Tooltip(el,{trigger:'hover'}));
+}
+
+function shiftMonth(dir){
+  calMonth+=dir;
+  if(calMonth>11){calMonth=0;calYear++;}
+  if(calMonth<0){calMonth=11;calYear--;}
+  renderCalendar();
+}
+
+function setView(btn, view){
+  currentView=view;
+  document.querySelectorAll('#viewToggle button').forEach(b=>{b.className='btn btn-outline-secondary';});
+  btn.className='btn btn-dark';
+  showToast('View: '+view.charAt(0).toUpperCase()+view.slice(1),'bg-secondary');
+}
+
+function setAgenda(el,key,label){
+  agendaFilter=key;
+  document.getElementById('agendaLabel').textContent=label;
+  renderCalendar();
+}
+
+function viewEvent(dateStr, idx){
+  viewEventIdx=idx;
+  const s=schedules[idx];
+  document.getElementById('eventBody').innerHTML=`
+    <div class="small">
+      <p class="text-muted mb-1">Doctor</p><p class="fw-semibold mb-2">${s.doc}</p>
+      <p class="text-muted mb-1">Date</p><p class="fw-semibold mb-2">${dateStr}</p>
+      <p class="text-muted mb-1">Time</p><p class="fw-semibold mb-2">${s.time}</p>
+      <p class="text-muted mb-1">Description</p><p class="fw-semibold mb-0">${s.desc||'—'}</p>
+    </div>`;
+  document.getElementById('deleteEventBtn').onclick=()=>{
+    schedules.splice(viewEventIdx,1);
+    bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+    renderCalendar(); showToast('Schedule removed','bg-danger');
+  };
+  new bootstrap.Modal(document.getElementById('eventModal')).show();
+}
+
+function addSchedule(){
+  const doc=document.getElementById('newSchedDoc').value;
+  const dateRaw=document.getElementById('newSchedDate').value;
+  const timeRaw=document.getElementById('newSchedTime').value;
+  const desc=document.getElementById('newSchedDesc').value.trim();
+  const style=document.getElementById('newSchedStyle').value;
+  if(!dateRaw||!timeRaw){showToast('Please fill all fields','bg-warning');return;}
+  const [h,m]=timeRaw.split(':');
+  const hr=parseInt(h);
+  const time=`${hr%12||12}:${m} ${hr<12?'AM':'PM'}`;
+  schedules.push({doc,date:dateRaw,time,desc:desc||'Appointment',style});
+  bootstrap.Modal.getInstance(document.getElementById('addSchedModal')).hide();
+  document.getElementById('newSchedDesc').value='';
+  // Navigate to that month
+  const d=new Date(dateRaw);
+  calYear=d.getFullYear(); calMonth=d.getMonth();
+  renderCalendar();
+  showToast('Schedule added ✓','bg-success');
+}
+
+function showToast(msg,bg){
+  const el=document.getElementById('toastEl');
+  el.className=`toast align-items-center text-white border-0 ${bg}`;
+  document.getElementById('toastMsg').textContent=msg;
+  new bootstrap.Toast(el,{delay:2500}).show();
+}
+
+renderCalendar();
+</script>
+</body>
+</html>

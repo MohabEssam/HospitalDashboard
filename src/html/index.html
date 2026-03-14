@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hospital Management Dashboard</title>
+<link rel="shortcut icon" type="image/png" href="../assets/images/logos/hospital (1).png"/>
+<link rel="stylesheet" href="../assets/css/styles.min.css" />
+<link rel="stylesheet" href="../assets/fontawesome-free-7.2.0-web/css/all.min.css">
+</head>
+
+<body>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+  data-navbarbg="skin6" data-sidebartype="full"
+  data-sidebar-position="fixed" data-header-position="fixed">
+
+<!-- ================= Sidebar ================= -->
+<aside class="left-sidebar">
+<div>
+<div class="brand-logo d-flex align-items-center justify-content-between">
+<a href="index.html" class="text-nowrap logo-img">
+  <h3 class="fw-bold text-primary"><i class="fa-solid fa-hospital me-2"></i> MediCare</h3>
+</a>
+<div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+  <i class="ti ti-x fs-8"></i>
+</div>
+</div>
+<nav class="sidebar-nav scroll-sidebar">
+<ul id="sidebarnav">
+<li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
+<li class="sidebar-item"><a class="sidebar-link active" href="index.html"><span><i class="ti ti-layout-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Appointments.html"><span><i class="fas fa-calendar-check"></i></span><span class="hide-menu">Appointments</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Patients.html"><span><i class="fas fa-user-injured"></i></span><span class="hide-menu">Patients</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Doctors.html"><span><i class="fas fa-user-md"></i></span><span class="hide-menu">Doctors</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Departments.html"><span><i class="fas fa-building"></i></span><span class="hide-menu">Departments</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Doctors' Schedule.html"><span><i class="fas fa-calendar-day"></i></span><span class="hide-menu">Doctors' Schedule</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Messages.html"><span><i class="fas fa-envelope"></i></span><span class="hide-menu">Messages</span></a></li>
+<li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">AUTH</span></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./register.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Register</span></a></li>
+</ul>
+</nav>
+</div>
+</aside>
+
+<!-- ================= Main Content ================= -->
+<div class="body-wrapper">
+  <header class="app-header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item d-block d-xl-none">
+          <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a>
+        </li>
+      </ul>
+      <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+              <i class="ti ti-bell-ringing"></i>
+              <div class="notification bg-primary rounded-circle"></div>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+              <div class="message-body">
+                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-user fs-6"></i><p class="mb-0 fs-3">My Profile</p></a>
+                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-mail fs-6"></i><p class="mb-0 fs-3">My Account</p></a>
+                                <a href="./login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row g-3">
+
+      <!-- ═══════════ LEFT MAIN AREA ═══════════ -->
+      <div class="col-xl-9">
+
+        <!-- ── Stat Cards ── -->
+        <div class="row g-3 mb-3">
+
+          <div class="col-6 col-xl-3">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body py-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="rounded-2 bg-light d-inline-flex align-items-center justify-content-center" style="width:32px;height:32px;"><i class="fas fa-user-md"></i></span>
+                    <span class="text-muted small">Active Doctors</span>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary border-0 p-0" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                      <li><a class="dropdown-item" href="Doctors.html">View Details</a></li>
+                      <li><a class="dropdown-item" href="#">Export</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h4 class="fw-bold mb-1">100</h4>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge rounded-pill fw-semibold d-inline-flex align-items-center gap-1" style="background:#e6f9f0;color:#1a9c5b;font-size:.68rem;"><i class="fas fa-arrow-up" style="font-size:.5rem;"></i>+2.14%</span>
+                  <span class="text-muted" style="font-size:.7rem;">56 more than yesterday</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-xl-3">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body py-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="rounded-2 bg-light d-inline-flex align-items-center justify-content-center" style="width:32px;height:32px;"><i class="fas fa-user-injured text-muted small"></i></span>
+                    <span class="text-muted small">Total Patients</span>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary border-0 p-0" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                      <li><a class="dropdown-item" href="./Patients.html">View All Patients</a></li>
+                      <li><a class="dropdown-item" href="#">Export</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h4 class="fw-bold mb-1">965</h4>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge rounded-pill fw-semibold d-inline-flex align-items-center gap-1" style="background:#e6f9f0;color:#1a9c5b;font-size:.68rem;"><i class="fas fa-arrow-up" style="font-size:.5rem;"></i>+3.78%</span>
+                  <span class="text-muted" style="font-size:.7rem;">45 more than yesterday</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-xl-3">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body py-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="rounded-2 bg-light d-inline-flex align-items-center justify-content-center" style="width:32px;height:32px;"><i class="fas fa-calendar-check text-muted small"></i></span>
+                    <span class="text-muted small">Appointments</span>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary border-0 p-0" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                      <li><a class="dropdown-item" href="./Appointments.html">View All Appointments</a></li>
+                      <li><a class="dropdown-item" href="#">Export</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h4 class="fw-bold mb-1">128</h4>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge rounded-pill fw-semibold d-inline-flex align-items-center gap-1" style="background:#fdecea;color:#c0392b;font-size:.68rem;"><i class="fas fa-arrow-down" style="font-size:.5rem;"></i>-1.56%</span>
+                  <span class="text-muted" style="font-size:.7rem;">18 less than yesterday</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-xl-3">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body py-3">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="rounded-2 bg-light d-inline-flex align-items-center justify-content-center" style="width:32px;height:32px;"><i class="fas fa-bed text-muted small"></i></span>
+                    <span class="text-muted small">Available Beds</span>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary border-0 p-0" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                      <li><a class="dropdown-item" href="#">View Rooms</a></li>
+                      <li><a class="dropdown-item" href="#">Export</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <h4 class="fw-bold mb-1">315</h4>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="badge rounded-pill fw-semibold d-inline-flex align-items-center gap-1" style="background:#e6f9f0;color:#1a9c5b;font-size:.68rem;"><i class="fas fa-arrow-up" style="font-size:.5rem;"></i>+1.64%</span>
+                  <span class="text-muted" style="font-size:.7rem;">56 more than yesterday</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── Charts Row ── -->
+        <div class="row g-3 mb-3">
+
+          <!-- Patient Overview -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-1">
+                  <div>
+                    <h6 class="fw-bold mb-0">Patient Overview</h6>
+                    <p class="text-muted mb-2" style="font-size:.72rem;">by Age Stages</p>
+                  </div>
+                  <div class="dropdown">
+                    <button class="btn btn-dark btn-sm d-flex align-items-center gap-1 dropdown-toggle" id="overviewDropdown" data-bs-toggle="dropdown" style="font-size:.75rem;">
+                      Last 8 Days
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                      <li><a class="dropdown-item" href="#" onclick="updateOverviewLabel(this,'Last 8 Days')">Last 8 Days</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="updateOverviewLabel(this,'Last 14 Days')">Last 14 Days</a></li>
+                      <li><a class="dropdown-item" href="#" onclick="updateOverviewLabel(this,'Last 30 Days')">Last 30 Days</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="d-flex gap-3 mb-2">
+                  <span class="d-flex align-items-center gap-1" style="font-size:.7rem;"><span class="rounded-circle d-inline-block flex-shrink-0" style="width:10px;height:10px;background:#1a2e4a;"></span> Child <strong class="ms-1">105</strong></span>
+                  <span class="d-flex align-items-center gap-1" style="font-size:.7rem;"><span class="rounded-circle d-inline-block flex-shrink-0" style="width:10px;height:10px;background:#3eb8b0;"></span> Adult <strong class="ms-1">132</strong></span>
+                  <span class="d-flex align-items-center gap-1" style="font-size:.7rem;"><span class="rounded-circle d-inline-block flex-shrink-0" style="width:10px;height:10px;background:#b2e0f5;"></span> Elderly <strong class="ms-1">38</strong></span>
+                </div>
+                <div id="patientOverviewChart"></div>
+                
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- Revenue -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h6 class="fw-bold mb-0">Revenue</h6>
+                  <div class="btn-group btn-group-sm" id="revenueToggle">
+                    <button class="btn btn-dark" style="font-size:.72rem;padding:3px 10px;" onclick="switchRevenue(this,'week')">Week</button>
+                    <button class="btn btn-outline-secondary" style="font-size:.72rem;padding:3px 10px;" onclick="switchRevenue(this,'month')">Month</button>
+                    <button class="btn btn-outline-secondary" style="font-size:.72rem;padding:3px 10px;" onclick="switchRevenue(this,'year')">Year</button>
+                  </div>
+                </div>
+                <div class="d-flex gap-3 mb-2">
+                  <span class="d-flex align-items-center gap-1" style="font-size:.7rem;"><span class="rounded-circle d-inline-block flex-shrink-0" style="width:10px;height:10px;background:#1a2e4a;"></span> Income</span>
+                  <span class="d-flex align-items-center gap-1" style="font-size:.7rem;"><span class="rounded-circle d-inline-block flex-shrink-0" style="width:10px;height:10px;background:#3eb8b0;"></span> Expense</span>
+                </div>
+                <div id="revenueChart"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── Donut + Doctors +  ── -->
+        <div class="row g-3 mb-3">
+
+          <!-- Dept Donut -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <h6 class="fw-bold mb-0">Department</h6>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary border-0 p-0" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                      <li><a class="dropdown-item" href="./Departments.html">View Departments</a></li>
+                      <li><a class="dropdown-item" href="#">Export</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div id="deptDonutChart"></div>
+                <div class="d-flex flex-column gap-2 mt-2">
+                  <div class="d-flex justify-content-between align-items-center" style="cursor:pointer;" onclick="highlightDept(0)">
+                    <span class="d-flex align-items-center gap-2" style="font-size:.75rem;"><span class="rounded-circle d-inline-block" style="width:9px;height:9px;background:#1a2e4a;"></span>Emergency</span>
+                    <span class="fw-semibold small">35%</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center" style="cursor:pointer;" onclick="highlightDept(1)">
+                    <span class="d-flex align-items-center gap-2" style="font-size:.75rem;"><span class="rounded-circle d-inline-block" style="width:9px;height:9px;background:#3eb8b0;"></span>General</span>
+                    <span class="fw-semibold small">28%</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center" style="cursor:pointer;" onclick="highlightDept(2)">
+                    <span class="d-flex align-items-center gap-2" style="font-size:.75rem;"><span class="rounded-circle d-inline-block" style="width:9px;height:9px;background:#b2e0f5;"></span>Internal</span>
+                    <span class="fw-semibold small">20%</span>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center" style="cursor:pointer;" onclick="highlightDept(3)">
+                    <span class="d-flex align-items-center gap-2" style="font-size:.75rem;"><span class="rounded-circle d-inline-block" style="width:9px;height:9px;background:#dee2e6;"></span>Other</span>
+                    <span class="fw-semibold small">17%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctors Schedule -->
+          <div class="col-lg-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h6 class="fw-bold mb-0">Doctors Schedule</h6>
+                  <a href="./Doctors.html" class="text-primary small text-decoration-none">View All</a>
+                </div>
+                <div class="d-flex flex-column gap-3">
+
+                  <div class="d-flex align-items-center gap-2" style="cursor:pointer;" onclick="window.location='./Doctors.html'">
+                    <span class="rounded-circle bg-primary bg-opacity-25 text-primary fw-bold d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width:34px;height:34px;font-size:.68rem;">PW</span>
+                    <div class="flex-grow-1 min-width-0">
+                      <p class="fw-semibold small mb-0 text-truncate">Dr. Petra Winsburry</p>
+                      <p class="text-muted mb-0" style="font-size:.68rem;">General Medicine</p>
+                    </div>
+                    <span class="badge fw-semibold border" style="font-size:.62rem;background:#d1faf3;color:#0a8c6a;border-color:#a7f3e0 !important;">Available</span>
+                  </div>
+
+                  <div class="d-flex align-items-center gap-2" style="cursor:pointer;" onclick="window.location='./Doctors.html'">
+                    <span class="rounded-circle bg-danger bg-opacity-25 text-danger fw-bold d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width:34px;height:34px;font-size:.68rem;">OM</span>
+                    <div class="flex-grow-1 min-width-0">
+                      <p class="fw-semibold small mb-0 text-truncate">Dr. Olivia Martinez</p>
+                      <p class="text-muted mb-0" style="font-size:.68rem;">Cardiology</p>
+                    </div>
+                    <span class="badge fw-semibold border" style="font-size:.62rem;background:#fdecea;color:#c0392b;border-color:#fbbcbc !important;">Unavailable</span>
+                  </div>
+
+                  <div class="d-flex align-items-center gap-2" style="cursor:pointer;" onclick="window.location='./Doctors.html'">
+                    <span class="rounded-circle bg-success bg-opacity-25 text-success fw-bold d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width:34px;height:34px;font-size:.68rem;">DS</span>
+                    <div class="flex-grow-1 min-width-0">
+                      <p class="fw-semibold small mb-0 text-truncate">Dr. Damian Sanchez</p>
+                      <p class="text-muted mb-0" style="font-size:.68rem;">Pediatrics</p>
+                    </div>
+                    <span class="badge fw-semibold border" style="font-size:.62rem;background:#d1faf3;color:#0a8c6a;border-color:#a7f3e0 !important;">Available</span>
+                  </div>
+
+                  <div class="d-flex align-items-center gap-2" style="cursor:pointer;" onclick="window.location='./Doctors.html'">
+                    <span class="rounded-circle bg-info bg-opacity-25 text-info fw-bold d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width:34px;height:34px;font-size:.68rem;">CH</span>
+                    <div class="flex-grow-1 min-width-0">
+                      <p class="fw-semibold small mb-0 text-truncate">Dr. Chloe Harrington</p>
+                      <p class="text-muted mb-0" style="font-size:.68rem;">Dermatology</p>
+                    </div>
+                    <span class="badge fw-semibold border" style="font-size:.62rem;background:#d1faf3;color:#0a8c6a;border-color:#a7f3e0 !important;">Available</span>
+                  </div>
+
+                  <div class="d-flex align-items-center gap-2" style="cursor:pointer;" onclick="window.location='./Doctors.html'">
+                    <span class="rounded-circle bg-warning bg-opacity-25 text-warning fw-bold d-inline-flex align-items-center justify-content-center flex-shrink-0" style="width:34px;height:34px;font-size:.68rem;">ES</span>
+                    <div class="flex-grow-1 min-width-0">
+                      <p class="fw-semibold small mb-0 text-truncate">Dr. Emily Smith</p>
+                      <p class="text-muted mb-0" style="font-size:.68rem;">Neurology</p>
+                    </div>
+                    <span class="badge fw-semibold border" style="font-size:.62rem;background:#d1faf3;color:#0a8c6a;border-color:#a7f3e0 !important;">Available</span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+      
+        </div>
+
+        <!-- ── Patient Appointment ── -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-bold mb-0">Patient Appointment</h6>
+              <a href="./Appointments.html" class="text-primary small text-decoration-none">View All</a>
+            </div>
+
+            <!-- Date strip -->
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <button class="btn btn-sm btn-outline-secondary border-0 p-1" onclick="shiftDates(-1)"><i class="fas fa-chevron-left text-muted small"></i></button>
+              <div class="d-flex align-items-center gap-1 flex-grow-1 overflow-hidden" id="dateStrip"></div>
+              <button class="btn btn-sm btn-outline-secondary border-0 p-1" onclick="shiftDates(1)"><i class="fas fa-chevron-right text-muted small"></i></button>
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive">
+              <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th class="text-muted fw-semibold small">Name</th>
+                    <th class="text-muted fw-semibold small">Date</th>
+                    <th class="text-muted fw-semibold small">Time</th>
+                    <th class="text-muted fw-semibold small">Doctor</th>
+                    <th class="text-muted fw-semibold small">Treatment</th>
+                    <th class="text-muted fw-semibold small">Status</th>
+                    <th class="text-muted fw-semibold small"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="small fw-medium">Caren G. Simpson</td>
+                    <td class="text-muted small">20-07-28</td>
+                    <td class="text-muted small">09:00 AM</td>
+                    <td class="small">Dr. Petra Winsburry</td>
+                    <td class="small">Routine Check-Up</td>
+                    <td><span class="badge bg-success bg-opacity-25 text-success px-3 py-2">Confirmed</span></td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary border-0 p-1" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                          <li><a class="dropdown-item" href="./Appointments.html">Reschedule</a></li>
+                          <li><a class="dropdown-item text-danger" href="#">Cancel</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="small fw-medium">Edgar Warrow</td>
+                    <td class="text-muted small">20-07-28</td>
+                    <td class="text-muted small">10:00 AM</td>
+                    <td class="small">Dr. Olivia Martinez</td>
+                    <td class="small">Cardiac Consultation</td>
+                    <td><span class="badge bg-warning bg-opacity-25 text-warning px-3 py-2">Pending</span></td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary border-0 p-1" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                          <li><a class="dropdown-item" href="./Appointments.html">Reschedule</a></li>
+                          <li><a class="dropdown-item text-danger" href="#">Cancel</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="small fw-medium">Ocean Jane Lupre</td>
+                    <td class="text-muted small">20-07-28</td>
+                    <td class="text-muted small">11:00 AM</td>
+                    <td class="small">Dr. Damian Sanchez</td>
+                    <td class="small">Pediatric Check-Up</td>
+                    <td><span class="badge bg-success bg-opacity-25 text-success px-3 py-2">Confirmed</span></td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary border-0 p-1" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                          <li><a class="dropdown-item" href="./Appointments.html">Reschedule</a></li>
+                          <li><a class="dropdown-item text-danger" href="#">Cancel</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="small fw-medium">Shane Riddick</td>
+                    <td class="text-muted small">20-07-28</td>
+                    <td class="text-muted small">01:00 PM</td>
+                    <td class="small">Dr. Chloe Harrington</td>
+                    <td class="small">Skin Allergy</td>
+                    <td><span class="badge bg-danger bg-opacity-25 text-danger px-3 py-2">Cancelled</span></td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-secondary border-0 p-1" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+                          <li><a class="dropdown-item" href="./Appointments.html">Reschedule</a></li>
+                          <li><a class="dropdown-item text-danger" href="#">Cancel</a></li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /col-xl-9 -->
+
+      <!-- ═══════════ RIGHT SIDEBAR ═══════════ -->
+      <div class="col-xl-3">
+        <div class="d-flex flex-column gap-3" style="position:sticky;top:70px;max-height:calc(100vh - 90px);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;">
+
+          <!-- Mini Calendar -->
+          <div class="card border-0 shadow-sm">
+            <div class="card-body pb-2">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="fw-bold mb-0" id="miniCalTitle">July 2026</h6>
+                <div class="d-flex gap-1">
+                  <button class="btn btn-sm btn-outline-secondary border-0 p-1" onclick="shiftMiniCal(-1)"><i class="fas fa-chevron-left text-muted" style="font-size:.65rem;"></i></button>
+                  <button class="btn btn-sm btn-outline-secondary border-0 p-1" onclick="shiftMiniCal(1)"><i class="fas fa-chevron-right text-muted" style="font-size:.65rem;"></i></button>
+                </div>
+              </div>
+              <div id="miniCalBody"></div>
+            </div>
+          </div>
+
+          <!-- Day Schedule -->
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-semibold mb-0" id="scheduleTitle">Wednesday, 12 July</h6>
+                <button class="btn btn-dark rounded-circle p-0 d-inline-flex align-items-center justify-content-center" style="width:24px;height:24px;" data-bs-toggle="modal" data-bs-target="#addEventModal"><i class="fas fa-plus" style="font-size:.55rem;"></i></button>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">08:00</span>
+                <div class="rounded-2 px-2 py-2 flex-grow-1" style="background:#b2f0ea;color:#0a6e68;">
+                  <p class="fw-bold mb-0" style="font-size:.7rem;">Morning Staff Meeting</p>
+                  <p class="mb-0" style="font-size:.63rem;opacity:.85;">08:00 AM – 09:00 AM</p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">09:00</span>
+                <div class="flex-grow-1"></div>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">10:00</span>
+                <div class="rounded-2 px-2 py-2 flex-grow-1" style="background:#cde8ff;color:#1a5fa8;">
+                  <p class="fw-bold mb-0" style="font-size:.7rem;">Patient Consultation – General Medicine</p>
+                  <p class="mb-0" style="font-size:.63rem;opacity:.85;">10:00 AM – 12:00 PM</p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">11:00</span>
+                <div class="flex-grow-1"></div>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">12:00</span>
+                <div class="flex-grow-1"></div>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">01:00</span>
+                <div class="rounded-2 px-2 py-2 flex-grow-1" style="background:#b2f0ea;color:#0a6e68;">
+                  <p class="fw-bold mb-0" style="font-size:.7rem;">Surgery – Orthopedics</p>
+                  <p class="mb-0" style="font-size:.63rem;opacity:.85;">01:00 PM – 03:00 PM</p>
+                </div>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">02:00</span>
+                <div class="flex-grow-1"></div>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">03:00</span>
+                <div class="flex-grow-1"></div>
+              </div>
+              <div class="d-flex gap-2 border-top py-2 align-items-start">
+                <span class="text-muted flex-shrink-0" style="font-size:.66rem;width:40px;padding-top:2px;">04:00</span>
+                <div class="rounded-2 px-2 py-2 flex-grow-1" style="background:#cde8ff;color:#1a5fa8;">
+                  <p class="fw-bold mb-0" style="font-size:.7rem;">Training Session</p>
+                  <p class="mb-0" style="font-size:.63rem;opacity:.85;">04:00 PM – 05:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    
+
+        </div>
+      </div><!-- /col-xl-3 -->
+
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Add Event Modal -->
+<div class="modal fade" id="addEventModal" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header border-0 pb-0">
+        <h6 class="modal-title fw-bold">Add Schedule Event</h6>
+        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body pt-2">
+        <div class="mb-2">
+          <label class="form-label small fw-semibold">Event Title</label>
+          <input type="text" class="form-control form-control-sm" id="newEventTitle" placeholder="e.g. Patient Consultation">
+        </div>
+        <div class="mb-2">
+          <label class="form-label small fw-semibold">Time</label>
+          <input type="time" class="form-control form-control-sm" id="newEventTime">
+        </div>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-dark btn-sm" data-bs-dismiss="modal">Add Event</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/sidebarmenu.js"></script>
+<script src="../assets/js/app.min.js"></script>
+<script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script>
+
+/* ── ApexCharts ── */
+const patientChart = new ApexCharts(document.querySelector('#patientOverviewChart'), {
+  chart:{ type:'bar', height:200, toolbar:{ show:false } },
+  series:[
+    { name:'Child',   data:[18,22,15,28,20,16,24,19] },
+    { name:'Adult',   data:[30,25,32,27,35,28,22,30] },
+    { name:'Elderly', data:[8,6,10,7,9,5,12,8] }
+  ],
+  colors:['#1a2e4a','#3eb8b0','#b2e0f5'],
+  plotOptions:{ bar:{ columnWidth:'60%', borderRadius:3 } },
+  dataLabels:{ enabled:false },
+  xaxis:{ categories:['4 Jul','5 Jul','6 Jul','7 Jul','8 Jul','9 Jul','10 Jul','11 Jul'], labels:{ style:{ fontSize:'10px' } } },
+  yaxis:{ labels:{ style:{ fontSize:'10px' } } },
+  legend:{ show:false },
+  grid:{ borderColor:'#f0f0f0' }
+});
+patientChart.render();
+
+const revenueData = {
+  week:  { cats:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], income:[800,950,1100,900,1200,1495,1050], expense:[600,700,650,800,700,750,680] },
+  month: { cats:['W1','W2','W3','W4'], income:[5200,6100,5800,7200], expense:[3800,4200,4100,5000] },
+  year:  { cats:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], income:[14000,12500,16000,15000,17500,16200,18000,17000,15500,16800,19000,21000], expense:[10000,9500,11000,10500,12000,11200,12500,11800,10800,11500,13000,14500] }
+};
+const revenueChart = new ApexCharts(document.querySelector('#revenueChart'), {
+  chart:{ type:'line', height:200, toolbar:{ show:false } },
+  series:[{ name:'Income', data:revenueData.week.income },{ name:'Expense', data:revenueData.week.expense }],
+  colors:['#1a2e4a','#3eb8b0'],
+  stroke:{ curve:'smooth', width:2 },
+  dataLabels:{ enabled:false },
+  xaxis:{ categories:revenueData.week.cats, labels:{ style:{ fontSize:'10px' } } },
+  yaxis:{ labels:{ formatter: v => '$'+v, style:{ fontSize:'10px' } } },
+  legend:{ show:false },
+  grid:{ borderColor:'#f0f0f0' },
+  markers:{ size:0 }
+});
+revenueChart.render();
+
+function switchRevenue(btn, period) {
+  document.querySelectorAll('#revenueToggle button').forEach(b => {
+    b.className = 'btn btn-outline-secondary';
+    b.style.cssText = 'font-size:.72rem;padding:3px 10px;';
+  });
+  btn.className = 'btn btn-dark';
+  btn.style.cssText = 'font-size:.72rem;padding:3px 10px;';
+  const d = revenueData[period];
+  revenueChart.updateOptions({ xaxis:{ categories: d.cats } });
+  revenueChart.updateSeries([{ name:'Income', data: d.income },{ name:'Expense', data: d.expense }]);
+}
+
+const deptChart = new ApexCharts(document.querySelector('#deptDonutChart'), {
+  chart:{ type:'donut', height:180 },
+  series:[35,28,20,17],
+  labels:['Emergency','General','Internal','Other'],
+  colors:['#1a2e4a','#3eb8b0','#b2e0f5','#dee2e6'],
+  dataLabels:{ enabled:false },
+  legend:{ show:false },
+  plotOptions:{ pie:{ donut:{ size:'72%', labels:{ show:true, total:{ show:true, label:'Overall', fontSize:'11px', color:'#adb5bd', formatter:()=>'1,890' }, value:{ fontSize:'18px', fontWeight:700, color:'#1a2e4a' } } } } }
+});
+deptChart.render();
+
+function highlightDept(idx) { deptChart.toggleDataPointSelection(idx); }
+
+function updateOverviewLabel(el, label) {
+  document.getElementById('overviewDropdown').innerHTML = label + ' <i class="fas fa-chevron-down ms-1" style="font-size:.6rem;"></i>';
+}
+
+/* ── Date Strip ── */
+const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+let dateOffset = 0;
+const baseDate = 12; 
+
+function renderDateStrip() {
+  const strip = document.getElementById('dateStrip');
+  strip.innerHTML = '';
+  for (let i = 0; i < 14; i++) {
+    const num = baseDate + dateOffset + i;
+    const dayIdx = (3 + dateOffset + i) % 7; 
+    const isActive = (num === 20 && dateOffset === 0) || (i === 8 && dateOffset !== 0);
+    const el = document.createElement('div');
+    el.className = 'text-center px-2 py-1 rounded-2' + (isActive ? ' bg-dark text-white' : '');
+    el.style.cssText = 'cursor:pointer;min-width:46px;flex-shrink:0;';
+    el.innerHTML = `<span class="d-block${isActive ? '' : ' text-muted'}" style="font-size:.6rem;">${days[dayIdx]}</span><span class="fw-bold" style="font-size:.82rem;">${num}</span>`;
+    el.addEventListener('click', function() {
+      strip.querySelectorAll('div').forEach(d => { d.className = 'text-center px-2 py-1 rounded-2'; d.style.cssText = 'cursor:pointer;min-width:46px;flex-shrink:0;'; d.querySelector('span').className = 'd-block text-muted'; });
+      this.className = 'text-center px-2 py-1 rounded-2 bg-dark text-white';
+      this.style.cssText = 'cursor:pointer;min-width:46px;flex-shrink:0;';
+    });
+    strip.appendChild(el);
+  }
+}
+function shiftDates(dir) { dateOffset += dir * 7; renderDateStrip(); }
+renderDateStrip();
+
+/* ── Mini Calendar ── */
+const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+let miniMonth = 6; 
+let miniYear = 2026;
+let selectedDay = 12;
+
+function renderMiniCal() {
+  document.getElementById('miniCalTitle').textContent = monthNames[miniMonth] + ' ' + miniYear;
+  const firstDay = new Date(miniYear, miniMonth, 1).getDay();
+  const daysInMonth = new Date(miniYear, miniMonth + 1, 0).getDate();
+  const prevDays = new Date(miniYear, miniMonth, 0).getDate();
+
+  let html = '<table class="w-100" style="border-collapse:collapse;"><thead><tr>';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
+    html += `<th class="text-center text-muted fw-semibold" style="font-size:.7rem;padding:4px 2px;">${d}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+
+  let day = 1, nextDay = 1, cell = 0;
+  for (let r = 0; r < 6; r++) {
+    html += '<tr>';
+    for (let c = 0; c < 7; c++) {
+      if (r === 0 && c < firstDay) {
+        const pd = prevDays - firstDay + c + 1;
+        html += `<td class="text-center text-muted" style="font-size:.72rem;padding:4px 2px;">${pd}</td>`;
+      } else if (day > daysInMonth) {
+        html += `<td class="text-center text-muted" style="font-size:.72rem;padding:4px 2px;">${nextDay++}</td>`;
+      } else {
+        const isSel = day === selectedDay;
+        const isToday = day === 13 && miniMonth === 6 && miniYear === 2026;
+        const d = day;
+        let inner;
+        if (isSel) inner = `<span class="d-inline-flex align-items-center justify-content-center rounded-circle fw-bold" style="width:22px;height:22px;background:#3eb8b0;color:#fff;font-size:.65rem;">${d}</span>`;
+        else if (isToday) inner = `<span class="d-inline-flex align-items-center justify-content-center rounded-circle fw-bold" style="width:22px;height:22px;background:#1a2e4a;color:#fff;font-size:.65rem;">${d}</span>`;
+        else inner = d;
+        html += `<td class="text-center" style="font-size:.72rem;padding:4px 2px;cursor:pointer;" onclick="selectCalDay(${d})">${inner}</td>`;
+        day++;
+      }
+    }
+    html += '</tr>';
+    if (day > daysInMonth && r < 5) break;
+  }
+  html += '</tbody></table>';
+  document.getElementById('miniCalBody').innerHTML = html;
+}
+
+function selectCalDay(d) {
+  selectedDay = d;
+  const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const dow = new Date(miniYear, miniMonth, d).getDay();
+  document.getElementById('scheduleTitle').textContent = `${dayNames[dow]}, ${d} ${monthNames[miniMonth].slice(0,3)}`;
+  renderMiniCal();
+}
+
+function shiftMiniCal(dir) {
+  miniMonth += dir;
+  if (miniMonth > 11) { miniMonth = 0; miniYear++; }
+  if (miniMonth < 0)  { miniMonth = 11; miniYear--; }
+  renderMiniCal();
+}
+
+renderMiniCal();
+
+
+
+</script>
+</body>
+</html>

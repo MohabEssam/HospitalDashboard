@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hospital Management Dashboard</title>
+<link rel="shortcut icon" type="image/png" href="../assets/images/logos/hospital (1).png"/>
+<link rel="stylesheet" href="../assets/css/styles.min.css" />
+<link rel="stylesheet" href="../assets/fontawesome-free-7.2.0-web/css/all.min.css">
+
+</head>
+
+<body>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+data-navbarbg="skin6" data-sidebartype="full"
+data-sidebar-position="fixed" data-header-position="fixed">
+
+<!-- ================= Sidebar ================= -->
+<aside class="left-sidebar">
+<div>
+<div class="brand-logo d-flex align-items-center justify-content-between">
+<a href="index.html" class="text-nowrap logo-img">
+  <h3 class="fw-bold text-primary">
+    <i class="fa-solid fa-hospital me-2"></i> MediCare
+  </h3>
+</a>
+<div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+<i class="ti ti-x fs-8"></i>
+</div>
+</div>
+
+<nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+<ul id="sidebarnav">
+<li class="nav-small-cap">
+<i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+<span class="hide-menu">Home</span>
+</li>
+
+<li class="sidebar-item">
+<a class="sidebar-link" href="index.html">
+<span><i class="ti ti-layout-dashboard"></i></span>
+<span class="hide-menu">Dashboard</span>
+</a>
+</li>
+
+
+<li class="sidebar-item"><a class="sidebar-link" href="./Appointments.html"><span><i class="fas fa-calendar-check "></i></span><span class="hide-menu">Appointments</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Patients.html"><span><i class="fas fa-user-injured"></i></span><span class="hide-menu">Patients</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Doctors.html"><span><i class="fas fa-user-md"></i></span><span class="hide-menu">Doctors</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Departments.html"><span><i class="fas fa-building"></i></span><span class="hide-menu">Departments</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Doctors' Schedule.html"><span><i class="fas fa-calendar-day"></i></span><span class="hide-menu">Doctors' Schedule</span></a></li>
+
+<li class="sidebar-item"><a class="sidebar-link" href="./Messages.html"><span><i class="fas fa-envelope"></i></span><span class="hide-menu">Messages</span></a></li>
+
+<li class="nav-small-cap">
+<i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+<span class="hide-menu">AUTH</span>
+</li>
+
+<li class="sidebar-item"><a class="sidebar-link" href="login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="register.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Register</span></a></li>
+</ul>
+</nav>
+</div>
+</aside>
+
+<!-- ================= Main Content ================= -->
+<div class="body-wrapper">
+  <header class="app-header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item d-block d-xl-none">
+          <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+            <i class="ti ti-bell-ringing"></i>
+            <div class="notification bg-primary rounded-circle"></div>
+          </a>
+        </li>
+      </ul>
+      <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+          <li class="nav-item dropdown">
+            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+              <div class="message-body">
+                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-user fs-6"></i><p class="mb-0 fs-3">My Profile</p></a>
+                <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-mail fs-6"></i><p class="mb-0 fs-3">My Account</p></a>
+                <a href="login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+
+    <!-- Page Title -->
+    <h4 class="fw-bold mb-4">Departments</h4>
+
+    <!-- Department Cards Grid -->
+    <div class="row g-4">
+
+      <!-- General Medicine -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/General Medicine.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="General Medicine">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">General Medicine</h6>
+            <p class="text-muted small mb-3">Provides comprehensive healthcare services including routine check-ups, preventive care, and treatment for a wi...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-primary bg-opacity-25 text-primary fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">PW</span>
+                <span class="rounded-circle bg-info bg-opacity-25 text-info fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">ES</span>
+                <span class="rounded-circle bg-warning bg-opacity-25 text-warning fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">JK</span>
+                <span class="text-muted small ms-1">+ 15 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cardiology -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Cardiology.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Cardiology">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Cardiology</h6>
+            <p class="text-muted small mb-3">Specializes in the diagnosis and treatment of heart-related conditions, offering advanced cardiac care and preventive...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-danger bg-opacity-25 text-danger fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">OM</span>
+                <span class="rounded-circle bg-success bg-opacity-25 text-success fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">ST</span>
+                <span class="rounded-circle bg-secondary bg-opacity-25 text-secondary fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">RL</span>
+                <span class="text-muted small ms-1">+ 30 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pediatrics -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Pediatrics.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Pediatrics">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Pediatrics</h6>
+            <p class="text-muted small mb-3">Dedicated to the health and well-being of children, providing specialized care for infants, children, and adols...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-info bg-opacity-25 text-info fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">DS</span>
+                <span class="rounded-circle bg-warning bg-opacity-25 text-warning fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">SJ</span>
+                <span class="rounded-circle bg-primary bg-opacity-25 text-primary fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">WC</span>
+                <span class="text-muted small ms-1">+ 7 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Neurology -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Neurology.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Neurology">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Neurology</h6>
+            <p class="text-muted small mb-3">Focuses on the diagnosis and treatment of disorders affecting the brain, spinal cord, and nervous system with cutting-edge...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-danger bg-opacity-25 text-danger fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">ES</span>
+                <span class="rounded-circle bg-info bg-opacity-25 text-info fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">MN</span>
+                <span class="rounded-circle bg-success bg-opacity-25 text-success fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">AK</span>
+                <span class="text-muted small ms-1">+ 12 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orthopedics -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Orthopedics.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Orthopedics">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Orthopedics</h6>
+            <p class="text-muted small mb-3">Specializes in the treatment of musculoskeletal conditions including bones, joints, ligaments, tendons, and muscles...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-warning bg-opacity-25 text-warning fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">AP</span>
+                <span class="rounded-circle bg-primary bg-opacity-25 text-primary fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">TG</span>
+                <span class="rounded-circle bg-danger bg-opacity-25 text-danger fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">LB</span>
+                <span class="text-muted small ms-1">+ 9 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dermatology -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Dermatology.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Dermatology">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Dermatology</h6>
+            <p class="text-muted small mb-3">Diagnoses and treats skin, hair, and nail conditions, from common rashes to complex dermatological diseases and cosmetic...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-success bg-opacity-25 text-success fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">CH</span>
+                <span class="rounded-circle bg-info bg-opacity-25 text-info fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">RV</span>
+                <span class="rounded-circle bg-warning bg-opacity-25 text-warning fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">NP</span>
+                <span class="text-muted small ms-1">+ 5 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Radiology -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Radiology.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Radiology">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Radiology</h6>
+            <p class="text-muted small mb-3">Uses advanced imaging technologies such as MRI, CT scans, and X-rays to diagnose and guide treatment of various...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-danger bg-opacity-25 text-danger fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">KW</span>
+                <span class="rounded-circle bg-primary bg-opacity-25 text-primary fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">BF</span>
+                <span class="rounded-circle bg-secondary bg-opacity-25 text-secondary fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">HM</span>
+                <span class="text-muted small ms-1">+ 8 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oncology -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Oncology.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Oncology">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Oncology</h6>
+            <p class="text-muted small mb-3">Provides comprehensive cancer care including diagnosis, chemotherapy, radiation therapy, and compassionate support for...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-info bg-opacity-25 text-info fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">GR</span>
+                <span class="rounded-circle bg-warning bg-opacity-25 text-warning fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">PA</span>
+                <span class="rounded-circle bg-danger bg-opacity-25 text-danger fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">YC</span>
+                <span class="text-muted small ms-1">+ 18 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency & Trauma -->
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Emergency & Trauma.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Emergency">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Emergency & Trauma</h6>
+            <p class="text-muted small mb-3">Provides immediate and critical care for life-threatening emergencies and severe trauma with 24/7 specialist availability...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-success bg-opacity-25 text-success fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">NF</span>
+                <span class="rounded-circle bg-primary bg-opacity-25 text-primary fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">DM</span>
+                <span class="rounded-circle bg-info bg-opacity-25 text-info fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">EL</span>
+                <span class="text-muted small ms-1">+ 22 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-xl-4">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="../assets/images/Department/Medical tests.jpg"
+            class="card-img-top object-fit-cover" style="height:180px;" alt="Emergency">
+          <div class="card-body">
+            <h6 class="fw-bold mb-1">Medical tests</h6>
+            <p class="text-muted small mb-3">Provides immediate and critical care for life-threatening emergencies and severe trauma with 24/7 specialist availability...</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center gap-1">
+                <span class="rounded-circle bg-success bg-opacity-25 text-success fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;">NF</span>
+                <span class="rounded-circle bg-primary bg-opacity-25 text-primary fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">DM</span>
+                <span class="rounded-circle bg-info bg-opacity-25 text-info fw-bold d-inline-flex align-items-center justify-content-center border border-white" style="width:28px;height:28px;font-size:.6rem;margin-left:-8px;">EL</span>
+                <span class="text-muted small ms-1">+ 22 others</span>
+              </div>
+              <a href="./DepartmentDetails.html" class="btn btn-dark btn-sm px-3">See Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /row -->
+  </div><!-- /container-fluid -->
+</div>
+</div>
+
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/sidebarmenu.js"></script>
+<script src="../assets/js/app.min.js"></script>
+<script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+
+</body>
+</html>

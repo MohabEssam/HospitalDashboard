@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Patients – Hospital Management Dashboard</title>
+<link rel="shortcut icon" type="image/png" href="../assets/images/logos/hospital (1).png"/>
+<link rel="stylesheet" href="../assets/css/styles.min.css"/>
+<link rel="stylesheet" href="../assets/fontawesome-free-7.2.0-web/css/all.min.css">
+</head>
+<body>
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+
+<aside class="left-sidebar"><div>
+<div class="brand-logo d-flex align-items-center justify-content-between">
+<a href="index.html" class="text-nowrap logo-img"><h3 class="fw-bold text-primary"><i class="fa-solid fa-hospital me-2"></i> MediCare</h3></a>
+<div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse"><i class="ti ti-x fs-8"></i></div>
+</div>
+<nav class="sidebar-nav scroll-sidebar"><ul id="sidebarnav">
+<li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">Home</span></li>
+<li class="sidebar-item"><a class="sidebar-link" href="index.html"><span><i class="ti ti-layout-dashboard"></i></span><span class="hide-menu">Dashboard</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Appointments.html"><span><i class="fas fa-calendar-check"></i></span><span class="hide-menu">Appointments</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link active" href="./Patients.html"><span><i class="fas fa-user-injured"></i></span><span class="hide-menu">Patients</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Doctors.html"><span><i class="fas fa-user-md"></i></span><span class="hide-menu">Doctors</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Departments.html"><span><i class="fas fa-building"></i></span><span class="hide-menu">Departments</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Doctors' Schedule.html"><span><i class="fas fa-calendar-day"></i></span><span class="hide-menu">Doctors' Schedule</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./Messages.html"><span><i class="fas fa-envelope"></i></span><span class="hide-menu">Messages</span></a></li>
+<li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">AUTH</span></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login</span></a></li>
+<li class="sidebar-item"><a class="sidebar-link" href="./register.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Register</span></a></li>
+</ul></nav></div></aside>
+
+<div class="body-wrapper">
+<header class="app-header">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <ul class="navbar-nav"><li class="nav-item d-block d-xl-none"><a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)"><i class="ti ti-menu-2"></i></a></li>
+    <li class="nav-item"><a class="nav-link nav-icon-hover" href="javascript:void(0)"><i class="ti ti-bell-ringing"></i><div class="notification bg-primary rounded-circle"></div></a></li></ul>
+    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+      <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+        <li class="nav-item dropdown">
+          <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+            <div class="message-body">
+              <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-user fs-6"></i><p class="mb-0 fs-3">My Profile</p></a>
+              <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-mail fs-6"></i><p class="mb-0 fs-3">My Account</p></a>
+                              <a href="./login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container-fluid">
+
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <h4 class="fw-bold mb-0">Patients</h4>
+    <span class="text-muted small" id="selInfo"></span>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 dropdown-toggle" data-bs-toggle="dropdown">
+        <i class="fas fa-calendar-alt"></i> <span id="dateLabel">1 July – 20 July 2026</span>
+      </button>
+      <ul class="dropdown-menu shadow-sm border-0" style="font-size:.82rem;">
+        <li><a class="dropdown-item" href="#" onclick="setDateLabel(this,'1 July – 20 July 2026')">1 July – 20 July 2026</a></li>
+        <li><a class="dropdown-item" href="#" onclick="setDateLabel(this,'21 July – 31 July 2026')">21 July – 31 July 2026</a></li>
+        <li><a class="dropdown-item" href="#" onclick="setDateLabel(this,'All Time')">All Time</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 dropdown-toggle" id="treatmentBtn" data-bs-toggle="dropdown">
+        <i class="fas fa-filter"></i> <span id="treatmentLabel">All Treatment</span>
+      </button>
+      <ul class="dropdown-menu shadow-sm border-0" style="font-size:.82rem;">
+        <li><a class="dropdown-item" href="#" onclick="filterTreatment('all','All Treatment')">All Treatment</a></li>
+        <li><a class="dropdown-item" href="#" onclick="filterTreatment('Routine Check-Up','Routine Check-Up')">Routine Check-Up</a></li>
+        <li><a class="dropdown-item" href="#" onclick="filterTreatment('Cardiac','Cardiac')">Cardiac</a></li>
+        <li><a class="dropdown-item" href="#" onclick="filterTreatment('Pediatric','Pediatric')">Pediatric</a></li>
+        <li><a class="dropdown-item" href="#" onclick="filterTreatment('Skin','Skin')">Skin Allergy</a></li>
+        <li><a class="dropdown-item" href="#" onclick="filterTreatment('Follow-Up','Follow-Up')">Follow-Up</a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 dropdown-toggle" id="statusBtn" data-bs-toggle="dropdown">
+        <i class="fas fa-filter"></i> <span id="statusLabel">All Status</span>
+      </button>
+      <ul class="dropdown-menu shadow-sm border-0" style="font-size:.82rem;">
+        <li><a class="dropdown-item" href="#" onclick="filterStatus('all','All Status')">All Status</a></li>
+        <li><a class="dropdown-item" href="#" onclick="filterStatus('Active','Active')">Active</a></li>
+        <li><a class="dropdown-item" href="#" onclick="filterStatus('New Patient','New Patient')">New Patient</a></li>
+        <li><a class="dropdown-item" href="#" onclick="filterStatus('Inactive','Inactive')">Inactive</a></li>
+      </ul>
+    </div>
+
+    <div class="input-group input-group-sm flex-grow-1" style="max-width:300px;">
+      <span class="input-group-text bg-white border-end-0"><i class="fas fa-search text-muted"></i></span>
+      <input type="text" class="form-control border-start-0 shadow-none" placeholder="Search name, ID, doctor…" id="patSearch" oninput="renderTable()">
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-outline-secondary btn-sm px-2 dropdown-toggle" data-bs-toggle="dropdown" title="Sort">
+        <i class="fas fa-sliders-h"></i>
+      </button>
+      <ul class="dropdown-menu shadow-sm border-0" style="font-size:.82rem;">
+        <li><h6 class="dropdown-header">Sort by</h6></li>
+        <li><a class="dropdown-item" href="#" onclick="sortBy('name')">Name A→Z</a></li>
+        <li><a class="dropdown-item" href="#" onclick="sortBy('id')">ID</a></li>
+        <li><a class="dropdown-item" href="#" onclick="sortBy('age')">Age</a></li>
+      </ul>
+    </div>
+
+    <button class="btn btn-dark btn-sm d-flex align-items-center gap-2 ms-auto" data-bs-toggle="modal" data-bs-target="#addPatientModal">
+      <i class="fas fa-plus"></i> Add Patient
+    </button>
+  </div>
+
+  <!-- Table -->
+  <div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th style="width:36px;"><input type="checkbox" class="form-check-input" id="checkAll" onchange="toggleAll(this)"></th>
+              <th class="text-muted fw-semibold small" style="cursor:pointer;" onclick="sortBy('name')">Name <i class="fas fa-sort text-muted" style="font-size:.6rem;"></i></th>
+              <th class="text-muted fw-semibold small" style="cursor:pointer;" onclick="sortBy('id')">ID <i class="fas fa-sort text-muted" style="font-size:.6rem;"></i></th>
+              <th class="text-muted fw-semibold small" style="cursor:pointer;" onclick="sortBy('age')">Age <i class="fas fa-sort text-muted" style="font-size:.6rem;"></i></th>
+              <th class="text-muted fw-semibold small">Check In</th>
+              <th class="text-muted fw-semibold small">Treatment</th>
+              <th class="text-muted fw-semibold small">Doctor Assigned</th>
+              <th class="text-muted fw-semibold small">Room</th>
+              <th class="text-muted fw-semibold small">Status</th>
+              <th class="text-muted fw-semibold small">Action</th>
+            </tr>
+          </thead>
+          <tbody id="patBody"></tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-between align-items-center px-3 py-2 border-top flex-wrap gap-2">
+        <span class="text-muted small" id="pageInfo"></span>
+        <nav><ul class="pagination pagination-sm mb-0" id="pagination"></ul></nav>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</div><!-- /body-wrapper -->
+</div>
+
+<!-- Add Patient Modal -->
+<div class="modal fade" id="addPatientModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header border-0"><h6 class="modal-title fw-bold">Add Patient</h6><button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body pt-0">
+        <div class="row g-3">
+          <div class="col-6"><label class="form-label small fw-semibold">Full Name</label><input type="text" class="form-control form-control-sm" id="newName" placeholder="Full name"></div>
+          <div class="col-6"><label class="form-label small fw-semibold">Age</label><input type="number" class="form-control form-control-sm" id="newAge" placeholder="Age" min="0" max="120"></div>
+          <div class="col-6"><label class="form-label small fw-semibold">Treatment</label>
+            <select class="form-select form-select-sm" id="newTreatment">
+              <option>Routine Check-Up</option><option>Cardiac Consultation</option><option>Pediatric Check-Up</option>
+              <option>Skin Allergy</option><option>Follow-Up Visit</option><option>Cardiac Check-Up</option>
+            </select></div>
+          <div class="col-6"><label class="form-label small fw-semibold">Doctor</label>
+            <select class="form-select form-select-sm" id="newDoctor">
+              <option>Dr. Petra Winsburry</option><option>Dr. Olivia Martinez</option><option>Dr. Damian Sanchez</option>
+              <option>Dr. Chloe Harrington</option><option>Dr. Emily Smith</option><option>Dr. Samuel Thompson</option>
+            </select></div>
+          <div class="col-6"><label class="form-label small fw-semibold">Room</label><input type="text" class="form-control form-control-sm" id="newRoom" placeholder="e.g. Single – 313"></div>
+          <div class="col-6"><label class="form-label small fw-semibold">Status</label>
+            <select class="form-select form-select-sm" id="newStatus">
+              <option>Active</option><option>New Patient</option><option>Inactive</option>
+            </select></div>
+        </div>
+      </div>
+      <div class="modal-footer border-0 pt-0">
+        <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-dark btn-sm" onclick="addPatient()">Save Patient</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- View Patient Modal -->
+<div class="modal fade" id="viewPatientModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content border-0 shadow">
+      <div class="modal-header border-0"><h6 class="modal-title fw-bold">Patient Details</h6><button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body pt-0" id="viewBody"></div>
+      <div class="modal-footer border-0 pt-0">
+        <a href="./Appointments.html" class="btn btn-dark btn-sm">Book Appointment</a>
+        <a href="./Messages.html" class="btn btn-outline-secondary btn-sm">Message</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index:9999;">
+  <div id="toastEl" class="toast align-items-center text-white border-0"><div class="d-flex"><div class="toast-body fw-semibold small" id="toastMsg"></div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button></div></div>
+</div>
+
+<script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/sidebarmenu.js"></script>
+<script src="../assets/js/app.min.js"></script>
+<script>
+const avatarColors = ['bg-primary','bg-warning','bg-info','bg-secondary','bg-primary','bg-warning','bg-info','bg-danger','bg-primary','bg-warning','bg-info','bg-success'];
+let patients = [
+  {id:301,initials:'CG',color:'bg-primary',name:'Caren G. Simpson',age:35,checkin:'20 July 2026',treatment:'Routine Check-Up',doctor:'Dr. Petra Winsburry',room:'–',status:'Active'},
+  {id:302,initials:'EW',color:'bg-warning',name:'Edgar Warrow',age:45,checkin:'20 July 2026',treatment:'Cardiac Consultation',doctor:'Dr. Olivia Martinez',room:'–',status:'Active'},
+  {id:303,initials:'OJ',color:'bg-info',name:'Ocean Jane Lupre',age:10,checkin:'20 July 2026',treatment:'Pediatric Check-Up',doctor:'Dr. Damian Sanchez',room:'Double – 303',status:'New Patient'},
+  {id:304,initials:'SR',color:'bg-secondary',name:'Shane Riddick',age:50,checkin:'20 July 2026',treatment:'Skin Allergy',doctor:'Dr. Chloe Harrington',room:'Single – 304',status:'Inactive'},
+  {id:305,initials:'QL',color:'bg-primary',name:'Queen Lawnston',age:60,checkin:'20 July 2026',treatment:'Follow-Up Visit',doctor:'Dr. Petra Winsburry',room:'Single – 305',status:'Active'},
+  {id:306,initials:'AM',color:'bg-warning',name:'Alice Mitchell',age:28,checkin:'20 July 2026',treatment:'Routine Check-Up',doctor:'Dr. Emily Smith',room:'–',status:'Active'},
+  {id:307,initials:'MM',color:'bg-info',name:'Mikhail Morozov',age:55,checkin:'20 July 2026',treatment:'Cardiac Consultation',doctor:'Dr. Samuel Thompson',room:'–',status:'Active'},
+  {id:308,initials:'MF',color:'bg-success',name:'Mateus Fernandes',age:12,checkin:'20 July 2026',treatment:'Pediatric Check-Up',doctor:'Dr. Sarah Johnson',room:'Double – 308',status:'New Patient'},
+  {id:309,initials:'PD',color:'bg-danger',name:'Pari Desai',age:40,checkin:'20 July 2026',treatment:'Skin Allergy',doctor:'Dr. Luke Harrison',room:'Single – 309',status:'Inactive'},
+  {id:310,initials:'OA',color:'bg-primary',name:'Omar Ali',age:70,checkin:'20 July 2026',treatment:'Follow-Up Visit',doctor:'Dr. Andrew Peterson',room:'Single – 310',status:'Active'},
+  {id:311,initials:'CA',color:'bg-warning',name:'Camila Alvarez',age:30,checkin:'20 July 2026',treatment:'Cardiac Check-Up',doctor:'Dr. Olivia Martinez',room:'–',status:'Active'},
+  {id:312,initials:'TR',color:'bg-info',name:'Thabo van Rooyen',age:15,checkin:'20 July 2026',treatment:'Pediatric Check-Up',doctor:'Dr. William Carter',room:'Double – 312',status:'New Patient'},
+];
+
+let filterTreat = 'all', filterStat = 'all', sortCol = null, sortDir = 1, currentPage = 1;
+const perPage = 8;
+
+const statusBadge = {
+  'Active':'badge bg-dark px-3 py-2',
+  'New Patient':'badge bg-success bg-opacity-25 text-success px-3 py-2',
+  'Inactive':'badge bg-danger bg-opacity-25 text-danger px-3 py-2'
+};
+
+function getFiltered() {
+  let rows = [...patients];
+  const q = document.getElementById('patSearch').value.toLowerCase();
+  if (q) rows = rows.filter(r => r.name.toLowerCase().includes(q) || String(r.id).includes(q) || r.doctor.toLowerCase().includes(q) || r.treatment.toLowerCase().includes(q));
+  if (filterTreat !== 'all') rows = rows.filter(r => r.treatment.includes(filterTreat));
+  if (filterStat !== 'all') rows = rows.filter(r => r.status === filterStat);
+  if (sortCol === 'name') rows.sort((a,b) => a.name.localeCompare(b.name) * sortDir);
+  if (sortCol === 'id')   rows.sort((a,b) => (a.id - b.id) * sortDir);
+  if (sortCol === 'age')  rows.sort((a,b) => (a.age - b.age) * sortDir);
+  return rows;
+}
+
+function renderTable() {
+  const rows = getFiltered();
+  const pages = Math.max(1, Math.ceil(rows.length / perPage));
+  if (currentPage > pages) currentPage = pages;
+  const slice = rows.slice((currentPage-1)*perPage, currentPage*perPage);
+  document.getElementById('patBody').innerHTML = slice.length ? slice.map(r => `
+    <tr>
+      <td><input type="checkbox" class="form-check-input row-check" data-id="${r.id}" onchange="updateSel()"></td>
+      <td>
+        <div class="d-flex align-items-center gap-2">
+          <span class="rounded-circle ${r.color} bg-opacity-25 text-${r.color.replace('bg-','')} fw-bold d-inline-flex align-items-center justify-content-center" style="width:34px;height:34px;font-size:.72rem;">${r.initials}</span>
+          <span class="fw-medium small">${r.name}</span>
+        </div>
+      </td>
+      <td class="text-muted small">${r.id}</td>
+      <td class="text-muted small">${r.age}</td>
+      <td class="text-muted small">${r.checkin}</td>
+      <td class="small">${r.treatment}</td>
+      <td class="small">${r.doctor}</td>
+      <td class="text-muted small">${r.room}</td>
+      <td><span class="${statusBadge[r.status]}">${r.status}</span></td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-sm btn-outline-secondary border-0 p-1" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-h text-muted" style="font-size:.7rem;"></i></button>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
+            <li><a class="dropdown-item" href="#" onclick="viewPatient(${r.id})"><i class="fas fa-eye me-2 text-muted"></i>View</a></li>
+            <li><a class="dropdown-item" href="./Appointments.html"><i class="fas fa-calendar-plus me-2 text-muted"></i>Book Appointment</a></li>
+            <li><a class="dropdown-item" href="./Messages.html"><i class="fas fa-envelope me-2 text-muted"></i>Message</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#" onclick="deletePatient(${r.id})"><i class="fas fa-trash me-2"></i>Remove</a></li>
+          </ul>
+        </div>
+      </td>
+    </tr>`).join('') :
+    '<tr><td colspan="10" class="text-center text-muted py-4 small">No patients found.</td></tr>';
+
+  document.getElementById('pageInfo').textContent = rows.length ? `Showing ${(currentPage-1)*perPage+1}–${Math.min(currentPage*perPage,rows.length)} of ${rows.length}` : '';
+  const pag = document.getElementById('pagination');
+  pag.innerHTML = '';
+  if (pages > 1) {
+    pag.innerHTML += `<li class="page-item ${currentPage===1?'disabled':''}"><a class="page-link" href="#" onclick="goPage(${currentPage-1})">‹</a></li>`;
+    for (let i=1;i<=pages;i++) pag.innerHTML += `<li class="page-item ${i===currentPage?'active':''}"><a class="page-link" href="#" onclick="goPage(${i})">${i}</a></li>`;
+    pag.innerHTML += `<li class="page-item ${currentPage===pages?'disabled':''}"><a class="page-link" href="#" onclick="goPage(${currentPage+1})">›</a></li>`;
+  }
+  document.getElementById('checkAll').checked = false;
+  updateSel();
+}
+
+function goPage(p){ currentPage=p; renderTable(); }
+function filterTreatment(v,l){ filterTreat=v; document.getElementById('treatmentLabel').textContent=l; currentPage=1; renderTable(); }
+function filterStatus(v,l){ filterStat=v; document.getElementById('statusLabel').textContent=l; currentPage=1; renderTable(); }
+function setDateLabel(el,l){ document.getElementById('dateLabel').textContent=l; showToast('Date range: '+l,'bg-secondary'); }
+function sortBy(col){ sortCol=col; sortDir=sortCol===col?-sortDir:1; renderTable(); }
+function toggleAll(cb){ document.querySelectorAll('.row-check').forEach(c=>c.checked=cb.checked); updateSel(); }
+function updateSel(){
+  const n = document.querySelectorAll('.row-check:checked').length;
+  document.getElementById('selInfo').textContent = n>0?`${n} patient${n>1?'s':''} selected`:'';
+}
+function deletePatient(id){ patients=patients.filter(p=>p.id!==id); renderTable(); showToast('Patient removed','bg-danger'); }
+function viewPatient(id){
+  const p = patients.find(x=>x.id===id);
+  document.getElementById('viewBody').innerHTML = `
+    <div class="d-flex align-items-center gap-3 mb-3">
+      <span class="rounded-circle ${p.color} bg-opacity-25 text-${p.color.replace('bg-','')} fw-bold d-inline-flex align-items-center justify-content-center" style="width:52px;height:52px;font-size:.9rem;">${p.initials}</span>
+      <div><h6 class="fw-bold mb-0">${p.name}</h6><p class="text-muted small mb-0">ID: ${p.id} &nbsp;·&nbsp; Age: ${p.age}</p></div>
+    </div>
+    <div class="row g-2 small">
+      <div class="col-6"><p class="text-muted mb-0">Treatment</p><p class="fw-semibold mb-0">${p.treatment}</p></div>
+      <div class="col-6"><p class="text-muted mb-0">Doctor</p><p class="fw-semibold mb-0">${p.doctor}</p></div>
+      <div class="col-6"><p class="text-muted mb-0">Room</p><p class="fw-semibold mb-0">${p.room}</p></div>
+      <div class="col-6"><p class="text-muted mb-0">Status</p><span class="${statusBadge[p.status]}">${p.status}</span></div>
+      <div class="col-12"><p class="text-muted mb-0">Check In</p><p class="fw-semibold mb-0">${p.checkin}</p></div>
+    </div>`;
+  new bootstrap.Modal(document.getElementById('viewPatientModal')).show();
+}
+function addPatient(){
+  const name = document.getElementById('newName').value.trim();
+  if (!name){ showToast('Please enter a patient name','bg-warning'); return; }
+  const initials = name.split(' ').slice(0,2).map(w=>w[0].toUpperCase()).join('');
+  const colors = ['bg-primary','bg-warning','bg-info','bg-success','bg-danger','bg-secondary'];
+  const color = colors[patients.length % colors.length];
+  const newId = Math.max(...patients.map(p=>p.id)) + 1;
+  patients.push({
+    id: newId, initials, color,
+    name, age: parseInt(document.getElementById('newAge').value)||0,
+    checkin: 'Today', treatment: document.getElementById('newTreatment').value,
+    doctor: document.getElementById('newDoctor').value,
+    room: document.getElementById('newRoom').value||'–',
+    status: document.getElementById('newStatus').value
+  });
+  bootstrap.Modal.getInstance(document.getElementById('addPatientModal')).hide();
+  document.getElementById('newName').value=''; document.getElementById('newAge').value=''; document.getElementById('newRoom').value='';
+  currentPage=1; renderTable();
+  showToast('Patient added ✓','bg-success');
+}
+function showToast(msg,bg){
+  const el=document.getElementById('toastEl');
+  el.className=`toast align-items-center text-white border-0 ${bg}`;
+  document.getElementById('toastMsg').textContent=msg;
+  new bootstrap.Toast(el,{delay:2500}).show();
+}
+renderTable();
+</script>
+</body>
+</html>
