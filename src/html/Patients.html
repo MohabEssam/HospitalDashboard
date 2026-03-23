@@ -24,7 +24,7 @@
 <li class="sidebar-item"><a class="sidebar-link" href="./Doctors.html"><span><i class="fas fa-user-md"></i></span><span class="hide-menu">Doctors</span></a></li>
 <li class="sidebar-item"><a class="sidebar-link" href="./Departments.html"><span><i class="fas fa-building"></i></span><span class="hide-menu">Departments</span></a></li>
 <li class="sidebar-item"><a class="sidebar-link" href="./Doctors' Schedule.html"><span><i class="fas fa-calendar-day"></i></span><span class="hide-menu">Doctors' Schedule</span></a></li>
-<li class="sidebar-item"><a class="sidebar-link" href="./Messages.html"><span><i class="fas fa-envelope"></i></span><span class="hide-menu">Messages</span></a></li>
+
 <li class="nav-small-cap"><i class="ti ti-dots nav-small-cap-icon fs-4"></i><span class="hide-menu">AUTH</span></li>
 <li class="sidebar-item"><a class="sidebar-link" href="./login.html"><span><i class="ti ti-login"></i></span><span class="hide-menu">Login</span></a></li>
 <li class="sidebar-item"><a class="sidebar-link" href="./register.html"><span><i class="ti ti-user-plus"></i></span><span class="hide-menu">Register</span></a></li>
@@ -42,7 +42,7 @@
             <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-            <div class="message-body">
+            <div class="-body">
               <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-user fs-6"></i><p class="mb-0 fs-3">My Profile</p></a>
               <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item"><i class="ti ti-mail fs-6"></i><p class="mb-0 fs-3">My Account</p></a>
                               <a href="./login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
@@ -198,7 +198,6 @@
       <div class="modal-body pt-0" id="viewBody"></div>
       <div class="modal-footer border-0 pt-0">
         <a href="./Appointments.html" class="btn btn-dark btn-sm">Book Appointment</a>
-        <a href="./Messages.html" class="btn btn-outline-secondary btn-sm">Message</a>
       </div>
     </div>
   </div>
@@ -278,7 +277,6 @@ function renderTable() {
           <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0" style="font-size:.8rem;">
             <li><a class="dropdown-item" href="#" onclick="viewPatient(${r.id})"><i class="fas fa-eye me-2 text-muted"></i>View</a></li>
             <li><a class="dropdown-item" href="./Appointments.html"><i class="fas fa-calendar-plus me-2 text-muted"></i>Book Appointment</a></li>
-            <li><a class="dropdown-item" href="./Messages.html"><i class="fas fa-envelope me-2 text-muted"></i>Message</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item text-danger" href="#" onclick="deletePatient(${r.id})"><i class="fas fa-trash me-2"></i>Remove</a></li>
           </ul>
