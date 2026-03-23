@@ -1,10 +1,15 @@
-
+// =========================================
+// /* ----------appointment-------- */
+// =========================================
 /* ── Data ── */
+
 let appointments = [
   { id:1, name:'Caren G. Simpson',  date:'2026-07-20', time:'09:00 AM', doctor:'Dr. Petra Winsburry',   treatment:'Routine Check-Up',      status:'Confirmed' },
+  { id:2, name:'Edgar Warrow',       date:'2026-07-20', time:'10:00 AM', doctor:'Dr. Olivia Martinez',   treatment:'Cardiac Consultation',  status:'Pending'   },
   { id:3, name:'Ocean Jane Lupre',   date:'2026-07-20', time:'11:00 AM', doctor:'Dr. Damian Sanchez',    treatment:'Pediatric Check-Up',    status:'Confirmed' },
   { id:4, name:'Shane Riddick',      date:'2026-07-20', time:'01:00 PM', doctor:'Dr. Chloe Harrington',  treatment:'Skin Allergy',          status:'Cancelled' },
   { id:5, name:'Queen Lawnston',     date:'2026-07-20', time:'02:30 PM', doctor:'Dr. Petra Winsburry',   treatment:'Follow-Up Visit',       status:'Confirmed' },
+  { id:6, name:'Alice Mitchell',     date:'2026-07-21', time:'09:30 AM', doctor:'Dr. Emily Smith',       treatment:'Neurology Consult',     status:'Pending'   },
   { id:7, name:'Omar Ali',           date:'2026-07-21', time:'11:00 AM', doctor:'Dr. Petra Winsburry',   treatment:'Routine Check-Up',      status:'Confirmed' },
   { id:8, name:'Camila Alvarez',     date:'2026-07-22', time:'03:00 PM', doctor:'Dr. Luke Harrison',     treatment:'Allergy Test',          status:'Cancelled' },
 ];
@@ -19,6 +24,7 @@ let reschedTarget = null;
 
 const badgeCls = {
   Confirmed: 'bg-success bg-opacity-25 text-success',
+  Pending:   'bg-warning bg-opacity-25 text-warning',
   Cancelled: 'bg-danger bg-opacity-25 text-danger'
 };
 
@@ -89,6 +95,7 @@ function renderTable() {
 function updateCounts() {
   document.getElementById('countAll').textContent       = appointments.length;
   document.getElementById('countConfirmed').textContent = appointments.filter(r=>r.status==='Confirmed').length;
+  document.getElementById('countPending').textContent   = appointments.filter(r=>r.status==='Pending').length;
   document.getElementById('countCancelled').textContent = appointments.filter(r=>r.status==='Cancelled').length;
 }
 
@@ -131,8 +138,8 @@ document.getElementById('bulkCancelBtn').addEventListener('click', () => {
 function setStatus(id, status) {
   const a = appointments.find(r => r.id === id);
   if (a) { a.status = status; renderTable(); }
-  const msgs = { Confirmed:'Appointment confirmed ✓', Cancelled:'Appointment cancelled' };
-  const cls  = { Confirmed:'bg-success', Cancelled:'bg-danger' };
+  const msgs = { Confirmed:'Appointment confirmed ✓', Cancelled:'Appointment cancelled', Pending:'Marked as pending' };
+  const cls  = { Confirmed:'bg-success', Cancelled:'bg-danger', Pending:'bg-warning' };
   showToast(msgs[status], cls[status]);
 }
 
@@ -170,7 +177,7 @@ function addAppointment() {
   const hr = parseInt(h);
   const time = `${hr%12||12}:${m} ${hr<12?'AM':'PM'}`;
   const newId = Math.max(...appointments.map(a=>a.id)) + 1;
-  appointments.push({ id:newId, name, date, time, doctor, treatment:treatment||'General' });
+  appointments.push({ id:newId, name, date, time, doctor, treatment:treatment||'General', status:'Pending' });
   bootstrap.Modal.getInstance(document.getElementById('addApptModal')).hide();
   document.getElementById('newName').value = '';
   document.getElementById('newTreatment').value = '';
@@ -200,21 +207,5 @@ function showToast(msg, bg) {
 
 // Init
 renderTable();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
